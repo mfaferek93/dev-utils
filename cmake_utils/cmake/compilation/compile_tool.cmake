@@ -56,6 +56,10 @@ function(compile_tool _SOURCE_PATH)
         # Add executable
         add_executable(${MODULE_NAME} ${${MODULE_NAME}_SOURCES})
 
+        if (NOT "${ARGV2}" STREQUAL "")
+            target_include_directories(${PROJECT_NAME} PRIVATE ${ARGV2})
+        endif()
+
         # Set name for target
         set_target_properties(
             ${MODULE_NAME}
